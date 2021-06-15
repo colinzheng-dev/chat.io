@@ -24,10 +24,7 @@ var findByIdAndUpdate = function(id, data, callback){
 	roomModel.findByIdAndUpdate(id, data, { new: true }, callback);
 }
 
-/**
- * Add a user along with the corresponding socket to the passed room
- *
- */
+
 var addUser = function(room, socket, callback){
 	
 	// Get current user's id
@@ -64,8 +61,7 @@ var getUsers = function(room, socket, callback){
 	});
 
 	// Loop on each user id, Then:
-	// Get the user object by id, and assign it to users array.
-	// So, users array will hold users' objects instead of ids.
+
 	var loadedUsers = 0;		
 	users.forEach(function(userId, i){
 		User.findById(userId, function(err, user){

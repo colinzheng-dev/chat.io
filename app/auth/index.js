@@ -28,7 +28,6 @@ var init = function(){
 		});
 	});
 
-	// Plug-in Local Strategy
 	passport.use(new LocalStrategy(
 	  function(username, password, done) {
 	    User.findOne({ username: new RegExp(username, 'i'), socialId: null }, function(err, user) {
@@ -50,8 +49,6 @@ var init = function(){
 	  }
 	));
 
-	// In case of Facebook, tokenA is the access token, while tokenB is the refersh token.
-	// In case of Twitter, tokenA is the token, whilet tokenB is the tokenSecret.
 	var verifySocialAccount = function(tokenA, tokenB, data, done) {
 		User.findOrCreate(data, function (err, user) {
 	      	if (err) { return done(err); }
